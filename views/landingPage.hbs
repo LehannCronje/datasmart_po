@@ -1,0 +1,28 @@
+<script>
+    function construction(){
+        alert('Ooops! Please ask the Datasmart bouncers why you cannot access this page!');
+    }
+</script>
+<div class="container-fluid top-nav">
+    <form class='logout' action="/logout" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Logout">
+    </form>
+</div>
+<div class="container login-container d-flex align-items-center justify-content-center">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="invoice-wrapper col-12">
+            <h1>Datasmart</h1>
+            <div class="form-wrapper">
+                <div>
+                    <button  class="btn btn-default btn-rounded mb-4 waves-effect waves-light"><a href="/reports">Reports</a></button>
+                </div>
+                <div>
+                    <button onclick='construction()'  class="btn btn-default btn-rounded mb-4 waves-effect waves-light">User Admin</button>
+                </div>
+                <form action="/chooseClient" method="post">
+                    <input class="btn btn-default btn-rounded mb-4 new-transaction" type="submit" value="New Transaction">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

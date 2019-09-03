@@ -1,0 +1,234 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background-color: rgba(54, 69, 79, 0.1); }
+
+.top-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .top-nav button {
+    background-color: #337ab7;
+    margin-right: 5px;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase; }
+    .top-nav button a {
+      color: white;
+      text-decoration: none; }
+  .top-nav input[type=submit] {
+    background-color: #337ab7;
+    color: white;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase; }
+  .top-nav .logout {
+    margin-left: auto; }
+
+.login-container {
+  text-align: center; }
+  .login-container .login-wrapper {
+    padding: 50px;
+    background-color: aliceblue;
+    -webkit-box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35);
+            box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35); }
+    .login-container .login-wrapper h1 {
+      text-transform: uppercase; }
+    .login-container .login-wrapper input {
+      width: 100%;
+      padding: 6px;
+      margin: 10px 0px;
+      border: solid 1px grey; }
+    .login-container .login-wrapper input[type=submit] {
+      background-color: #337ab7;
+      color: white;
+      font-weight: 600;
+      border: none;
+      text-transform: uppercase; }
+    .login-container .login-wrapper select {
+      padding: 10px;
+      margin: 10px 0px;
+      border: solid 1px #cfcfcf; }
+    .login-container .login-wrapper div {
+      display: block;
+      text-align: left; }
+  .login-container .invoice-wrapper {
+    min-width: 500px;
+    padding: 50px;
+    background-color: aliceblue;
+    -webkit-box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35);
+            box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35);
+    margin-bottom: 50px; }
+    .login-container .invoice-wrapper button {
+      width: 100%;
+      display: inline-block;
+      margin: 10px 0px;
+      background-color: #337ab7;
+      color: white;
+      font-weight: 600;
+      border: none;
+      text-transform: uppercase; }
+      .login-container .invoice-wrapper button a {
+        color: white;
+        text-decoration: none; }
+    .login-container .invoice-wrapper input {
+      padding: 6px;
+      margin: 10px 0px;
+      border: solid 1px #cfcfcf; }
+    .login-container .invoice-wrapper input[type=submit] {
+      background-color: #337ab7;
+      color: white;
+      font-weight: 600;
+      border: none;
+      text-transform: uppercase;
+      width: 250px; }
+    .login-container .invoice-wrapper .new-transaction {
+      width: 100% !important; }
+    .login-container .invoice-wrapper input[type=button] {
+      background-color: #337ab7;
+      color: white;
+      font-weight: 600;
+      border: none;
+      text-transform: uppercase; }
+    .login-container .invoice-wrapper select {
+      padding: 6px;
+      margin: 10px 0px;
+      border: solid 1px #cfcfcf; }
+    .login-container .invoice-wrapper .labels {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start; }
+      .login-container .invoice-wrapper .labels label {
+        margin-right: 148px; }
+      .login-container .invoice-wrapper .labels label:first-child {
+        margin-right: 270px; }
+      .login-container .invoice-wrapper .labels label:last-child {
+        margin-right: 0px; }
+    .login-container .invoice-wrapper a {
+      background-color: #337ab7;
+      color: white;
+      font-weight: 600;
+      border: none;
+      text-transform: uppercase;
+      margin: 10px 0px; }
+    .login-container .invoice-wrapper .formElementContainer {
+      display: inline-block; }
+      .login-container .invoice-wrapper .formElementContainer label {
+        display: block;
+        text-align: left; }
+  .login-container .preview-wrapper button {
+    width: 100%;
+    display: inline-block;
+    margin: 10px 0px;
+    background-color: #337ab7;
+    color: white;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase; }
+    .login-container .preview-wrapper button a {
+      color: white;
+      text-decoration: none; }
+  .login-container .preview-wrapper input[type=button] {
+    display: inline-block;
+    padding: 6px;
+    margin: 10px 0px;
+    background-color: #337ab7;
+    color: white;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase; }
+
+.form-wrapper .top-input-form {
+  text-align: start;
+  font-size: 14px; }
+  .form-wrapper .top-input-form h3 {
+    text-align: center; }
+  .form-wrapper .top-input-form .top-input-form-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .form-wrapper .top-input-form .top-input-form-item div {
+      display: inline-block;
+      width: 180px; }
+    .form-wrapper .top-input-form .top-input-form-item input {
+      width: 250px; }
+
+.clientsupSelect label {
+  display: block; }
+
+.clientsupSelect select {
+  width: 100%; }
+
+.clientsupFields {
+  width: 300px; }
+
+#modalLoginForm label {
+  margin: 10px 0px; }
+
+#modalLoginForm input {
+  width: 100%;
+  padding: 6px;
+  border: solid 1px #cfcfcf; }
+
+#modalLoginForm input[type=submit] {
+  background-color: #337ab7;
+  color: white;
+  font-weight: 600;
+  border: none;
+  text-transform: uppercase;
+  width: 250px; }
+
+.report-container {
+  padding: 0px; }
+  .report-container .reports-row {
+    min-height: 50%;
+    margin: 0px;
+    padding: 15px;
+    background-color: aliceblue;
+    -webkit-box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35);
+            box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.35);
+    border-radius: 5px; }
+    .report-container .reports-row h1 {
+      text-align: center;
+      text-transform: uppercase; }
+
+.report-content {
+  padding: 15px; }
+  .report-content h3 {
+    text-align: center; }
+  .report-content .input-wrapper {
+    margin: 5px 0px 30px 0px; }
+  .report-content input[type=submit] {
+    background-color: #337ab7;
+    color: white;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase;
+    width: 100%;
+    height: 35px; }
+  .report-content input {
+    padding: 6px;
+    border: solid 1px #cfcfcf;
+    width: 100%;
+    height: 35px; }
+  .report-content select {
+    padding: 6px;
+    margin: 10px 0px;
+    border: solid 1px #cfcfcf;
+    width: 100%; }
