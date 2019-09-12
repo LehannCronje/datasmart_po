@@ -1,0 +1,31 @@
+<div class="container-fluid top-nav">
+    <button class="btn btn-default btn-rounded mb-4 waves-effect waves-light"><a href="/landingPage">Home</a></button>
+    <form class='back' action="/invoice" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Back">
+    </form>
+    <form class='logout' action="/logout" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Logout">
+    </form>
+</div>
+<div class="container-fluid login-container d-flex align-items-center justify-content-center">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="login-wrapper col-12">
+            <h1>Preview or Download</h1>
+            <p>The Invoices are now genereated.</p>
+            <p>You can preview them or download them.</p>
+            <div class="preview-wrapper">
+                <button class="btn btn-default btn-rounded mb-4 waves-effect waves-light"><a href="/pdf/preview.pdf" target='_blank'>preview</a></button>
+                <form action="/download" method="post">
+                    <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Download">
+                </form>
+                <form action="/chooseClient" method="POST">
+                    <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Create New Invoice">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,232 @@
+<script>
+    $( document ).ready(function() {
+    $('#addProductSubmit').click(function(){
+        var newDiscounttxt = $('#newDiscoutTxt').val();
+        var newShipHantxt = $('#newShipHanTxt').val();
+        $('#addProductCheckerID').val('true');
+        $('#addProductDescriptionPlaceholderID').val(newDiscounttxt);
+        $('#addProductCodePlaceholderID').val(newShipHantxt);
+        $('#goodsForm').submit();
+    });
+    });
+    
+</script>
+<script>
+    i=1;
+    function deleteElem(elem){
+        elem.parentElement.parentElement.remove();
+    }
+    function addElem(elem){
+        var id = $(elem).parent().parent().attr('id');
+        $('.goods').append('<div id=item'+(i)+'></div>')
+        $('#item').find(".content").clone().appendTo('#item'+i);
+        //$('#item'+i).find('input').attr('name','data'+i);
+        $('#item'+i).find('button').attr('id','delete'+i);
+        i++;
+    }
+
+    
+
+    
+</script>
+<div class="container-fluid top-nav">
+    <button class="btn btn-default btn-rounded mb-4 waves-effect waves-light"><a href="/landingPage">Home</a></button>
+    <form class='back' action="/chooseClient" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Back">
+    </form>
+    <form class='logout' action="/logout" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Logout">
+    </form>
+</div>
+
+<div id="item" style="display:none;">
+    <div class="content">
+        <select name="goodsD" id="goodsD">
+        {{#each goodsD}}
+             <option value="{{this.ProdCode}},{{this.ProdDescription}},{{this.ProductID}}">{{this.ProdDescription}}</option>
+        {{/each}}
+        </select>
+        <input type="text" name="quan">
+        <input type="text" name="data">
+        <input value='delete' type="button" name='delete' onclick='deleteElem(this)' >
+    </div>
+</div>
+<div class="container login-container">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="invoice-wrapper col-12">
+            <h1>Build Invoice</h1>
+            <div class="form-wrapper">
+                <form id='goodsForm' action="/generateInvoice" method="POST">
+                <input id="addProductCheckerID" type="text" name="addProductChecker" style='display:none' value="false">
+                <input id="addProductDescriptionPlaceholderID" type="text" name="addProductDescriptionPlaceholder" style="display:none">
+                <input id="addProductCodePlaceholderID" type="text" name="addProductCodePlaceholder" style="display:none">
+                <label for="">Supplier:</label>
+                <input class="clientsupFields" type="text" name='sup' id="supField" value="{{supD}}" readonly>
+                <label for="">Client:</label>
+                <input class="clientsupFields" type="text" name='client' id="clientField" value="{{clientD}}" readonly>
+                <hr>
+                <div class="top-input-form">
+                    <h3>General Input Values</h3>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="top-input-form-item">
+                                <div>
+                                    <label for="">Supplier invoice number</label>
+                                </div>
+                                <input type="text" name="supInvNum" value={{generalData.supInvNum}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+                                <label for="">Supplier invoice Date</label>
+
+                                </div>
+                                <input type="date" name="supInvDate" value={{generalData.supInvDate}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+                                <label for="">Customer Account Number</label>
+
+                                </div>
+                                <input type="text" name="custAccNum" value={{generalData.custAccNum}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+                                <label for="">Customs Value</label>
+
+                                </div>
+                                <input type="text" name="customsVal" value={{generalData.customsVal}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+                                <label for="">Total Duty</label>
+
+                                </div>
+                                <input type="text" name="totalDuty" value={{generalData.totalDuty}}>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="top-input-form-item">
+                                <div>
+                                <label for="">VAT</label>
+
+                                </div>
+                                <input type="text" name="vat" value={{generalData.vat}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+                                    
+                                <label for="">Discount</label>
+                                </div>
+                                <input type="text" name="discount" value={{generalData.discount}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+
+                                <label for="">Shipping 	&amp; Handling </label>
+                                </div>
+                                <input type="text" name="shipHan" value={{generalData.shipHan}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+
+                                <label for="">Weight</label>
+                                </div>
+                                <input type="text" name="weight" value={{generalData.weight}}>
+                            </div>
+                            <div class="top-input-form-item">
+                                <div>
+
+                                <label for="">Description</label>
+                                </div>
+                                <input type="text" name="description" value='{{generalData.description}}'>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                
+                <hr style="padding-top:5px;">
+                <h3>Choose Products</h3>
+                <a href="" id="addProduct" class="btn btn-default btn-rounded mb-4 waves-effect waves-light" data-toggle="modal" data-target="#modalLoginForm">add product</a>
+                <input id="addField" class="btn btn-default btn-rounded mb-4 waves-effect waves-light" value='add field' type="button" name='add' onclick='addElem(this)' >
+                    <div class="goods">
+                        {{#each cachedData}}
+                            <div id="item{{@index}}">
+                                <div class="content">
+                                    <div class="formElementContainer">
+                                        {{#compare @index 0 operator="=="}}
+                                            <label for="">Product:</label>
+                                        {{/compare}}
+                                        <select name="goodsD" id="goodsD">
+                                        {{#each ../goodsD}}
+                                            {{#equal this.ProdCode ../this.productCode}}
+                                                <option value="{{this.ProdCode}},{{this.ProdDescription}},{{this.ProductID}}" selected>{{this.ProdDescription}}</option>
+                                            {{/equal}}
+                                            {{#compare this.ProdCode ../this.productCode operator="!=" }}
+                                                <option value="{{this.ProdCode}},{{this.ProdDescription}},{{this.ProductID}}">{{this.ProdDescription}}</option>
+                                            {{/compare}}
+                                        {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="formElementContainer">
+                                        {{#compare @index 0 operator="=="}}
+                                            <label for="">Quantity</label>
+                                        {{/compare}}
+                                        <input type="text" name="quan" value={{this.quan}}>
+                                    </div>
+                                    <div class="formElementContainer">
+                                        {{#compare @index 0 operator="=="}}
+                                            <label for="">Amount:</label>
+                                        {{/compare}}
+                                        <input type="text" name="data" value={{this.val}}>
+                                    </div>
+                                    <input value='delete' type="button" name='delete' onclick='deleteElem(this)' >
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <input id='goodsSubmit' class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="submit">
+                    
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">        
+        <label for=""></label>
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Add Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="top-input-form-item">
+                    <div>
+                        <label for="">Product Code</label>
+                    </div>
+                    <input id="newDiscoutTxt" type="text" name="newDiscount">
+                </div>
+                <div class="top-input-form-item">
+                    <div>
+                        <label for="">Product Description </label>
+                    </div>
+                    <input id="newShipHanTxt" type="text" name="newShipHan">
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <input id="addProductSubmit" idclass="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value='submit'>
+            </div>
+    </div>
+  </div>
+</div>
+
+{{!-- <a href="/generatePDF">Generate Invoices</a>
+<a href="/download">download</a>
+<a href="/pdf/invoice1.pdf" target="_blank">preview</a> --}}

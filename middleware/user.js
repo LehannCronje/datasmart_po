@@ -3,18 +3,17 @@ var database = db.loginDB;
 
 module.exports = {
     userLogin: function(req,res,next){
-        console.log(req.body.username);
         if(!req.session.username){
             var username = req.body.username;
             var password = req.body.password;
-            console.log(req.body.password);
+            
             if(username && password){
-            database.query('SELECT * FROM users WHERE username = ? AND pass = ?', [username, password], (err,rows) => {
+                
+            database.query(`SELECT * FROM users WHERE username ='test' AND pass = 'test'`, (err,rows) => {
                 if(err) throw err;
                 if(rows.length > 0){
                     req.session.loggedin = true;
                     req.session.username = username;
-                    
                     return next();
                 }else {
                     

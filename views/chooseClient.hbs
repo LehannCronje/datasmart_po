@@ -1,0 +1,40 @@
+<div class="container-fluid top-nav">
+    <button class="btn btn-default btn-rounded mb-4 waves-effect waves-light"><a href="/landingPage">Home</a></button>
+    <form class='back' action="/landingPage" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Back">
+    </form>
+    <form class='logout' action="/logout" method="post">
+        <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit" value="Logout">
+    </form>
+</div>
+
+<div class="container-fluid login-container d-flex align-items-center justify-content-center">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="login-wrapper col-12">
+            <h1>Client and Supplier</h1>
+            <div class="form-wrapper">
+                <form action="/invoice" method="post">
+                <div class="clientsupSelect">
+                    <label for="SupSelect">Supplier:</label>
+                    <select name="sup" id="SupSelect">
+                        {{#each sup}}
+                        <option value="{{this.SupplierID}},{{this.SupplierName}}">{{this.SupplierName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="clientsupSelect">
+                    <label for="clientSelect">Client:</label>
+                    <select name="client" id="clientSelect">
+                        {{#each client}}
+                        <option value="{{this.CustomerID}},{{this.Cust_Name}}">{{this.Cust_Name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                    <input class="btn btn-default btn-rounded mb-4 waves-effect waves-light" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

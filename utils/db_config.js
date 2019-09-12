@@ -37,6 +37,6 @@ module.exports = {
         host: 'localhost',
         user:'root', //security
         password:'',
-        database: 'nodemon',
+        database: 'nodelogin',
     })
 }

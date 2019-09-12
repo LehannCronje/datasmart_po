@@ -5,15 +5,64 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var landingRouter = require('./routes/landingPage');
+var chooseClientRouter = require('./routes/chooseClient');
+var invoiceRouter = require('./routes/invoice');
+var generateInvoiceRouter = require('./routes/generateInvoice');
+
 
 var app = express();
 
+//setup session
+app.use(session({
+  'secret': 'lehann',
+  resave: true,
+}))
+
 var hbs = exphbs.create({
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: {
+    equal:function(lvalue, rvalue, options) {
+      if (arguments.length < 3)
+          throw new Error("Handlebars Helper equal needs 2 parameters");
+      if( lvalue!=rvalue ) {
+          return options.inverse(this);
+      } else {
+          return options.fn(this);
+      }
+    },
+    compare: function(lvalue,rvalue,options){
+        if (arguments.length < 3)
+          throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+
+      var operator = options.hash.operator || "==";
+
+      var operators = {
+          '==':       function(l,r) { return l == r; },
+          '===':      function(l,r) { return l === r; },
+          '!=':       function(l,r) { return l != r; },
+          '<':        function(l,r) { return l < r; },
+          '>':        function(l,r) { return l > r; },
+          '<=':       function(l,r) { return l <= r; },
+          '>=':       function(l,r) { return l >= r; },
+          'typeof':   function(l,r) { return typeof l == r; }
+      }
+
+      if (!operators[operator])
+          throw new Error("Handlerbars Helper 'compare' doesn't know the operator "+operator);
+
+      var result = operators[operator](lvalue,rvalue);
+
+      if( result ) {
+          return options.fn(this);
+      } else {
+          return options.inverse(this);
+      }
+    }
+  }
 });
 
 // view engine setup
@@ -28,6 +77,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/landingPage', landingRouter);
+app.use('/chooseClient', chooseClientRouter);
+app.use('/invoice', invoiceRouter);
+app.use('/generateInvoice', generateInvoiceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,10 +8,12 @@
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@nativedocuments/docx-wasm": "^2.2.13-1561490777",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.2",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.0",
     "gulp-babel": "^8.0.0",
@@ -24,6 +26,7 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "node-datetime": "^2.1.2"
   }
 }

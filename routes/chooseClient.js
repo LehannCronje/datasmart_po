@@ -1,14 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var clientsupMW = require('../middleware/clientsup');
 
-var userMW = require('../middleware/user');
-
-
-
-
-router.post('/', userMW.userLogin,function(req, res) {
-    res.render('landingPage');
-});
+router.post('/',clientsupMW.getClientSups, (req,res,next) => {
+    res.render('chooseClient' , {client: req.client, sup:req.sup});
+})
 
 router.get('/', function(req, res){
     if(req.session.username){
@@ -17,6 +13,5 @@ router.get('/', function(req, res){
         res.redirect('/');
     }
 });
-
 
 module.exports = router;
